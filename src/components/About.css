@@ -1,0 +1,80 @@
+.about-section {
+  padding: 84px 6% 104px;
+  border-top: 3px double var(--ink);
+}
+
+.about-inner {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.65fr) minmax(180px, 0.45fr) minmax(380px, 1.2fr);
+  gap: 5rem;
+}
+
+.about-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-kicker {
+  color: var(--blue);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about-heading h2 {
+  margin: 1.2rem 0 2rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.about-email {
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--blue);
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.about-email span { margin-left: 0.3rem; font-size: 1rem; }
+.about-email:hover { color: var(--ink); border-color: var(--ink); }
+
+.about-photo { align-self: start; margin: 0; }
+.about-photo-label { color: var(--blue); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.about-photo-frame { margin-top: 1rem; padding: 0.55rem; border: 1px solid var(--ink); background: var(--paper-deep); transform: rotate(-2deg); }
+.about-photo-frame img { width: 100%; aspect-ratio: 0.82; display: block; object-fit: cover; filter: grayscale(100%) contrast(1.08); }
+.about-photo figcaption { margin-top: 1.2rem; color: var(--ink-soft); font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.about-copy {
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--rule);
+}
+
+.about-copy p {
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 800px) {
+  .about-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .about-heading h2 { font-size: clamp(3.5rem, 16vw, 5.5rem); }
+  .about-copy { grid-column: 1 / -1; }
+}
+
+@media (max-width: 520px) {
+  .about-inner { grid-template-columns: 1fr; }
+  .about-copy { grid-column: auto; }
+  .about-photo { max-width: 220px; }
+}

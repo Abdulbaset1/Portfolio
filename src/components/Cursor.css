@@ -1,0 +1,136 @@
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+/* hide default cursor but keep it for form fields */
+body { cursor: none; }
+input, textarea, select, button { cursor: auto; }
+
+.custom-cursor .cursor-shape {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.custom-cursor .cursor-shape::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.custom-cursor .corner {
+  display: none;
+}
+.custom-cursor .corner.tl { top: 4px; left: 4px; transform: rotate(0deg); }
+.custom-cursor .corner.tr { top: 4px; right: 4px; transform: rotate(90deg); }
+.custom-cursor .corner.br { bottom: 4px; right: 4px; transform: rotate(180deg); }
+.custom-cursor .corner.bl { bottom: 4px; left: 4px; transform: rotate(270deg); }
+
+.custom-cursor .cross {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+.custom-cursor .cross::before,
+.custom-cursor .cross::after {
+  content: '';
+  position: absolute;
+  background: #000000;
+  border-radius: 999px;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+.custom-cursor .cross::before { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.custom-cursor .cross::after { top: 50%; left: 0; height: 2px; width: 100%; transform: translateY(-50%); }
+
+.custom-cursor .center-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  display: none;
+  background: #000000;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(181,24,41,0.12);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.custom-cursor.clicking {
+  transform: translate(-50%, -50%) scale(1.55);
+}
+
+.custom-cursor.clicking .cursor-shape::before {
+  border-color: #000000;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+.custom-cursor.clicking .cross::before,
+.custom-cursor.clicking .cross::after {
+  background: #000000;
+}
+
+.custom-cursor.light .cursor-shape::before {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+.custom-cursor.light .cross::before,
+.custom-cursor.light .cross::after {
+  background: #ffffff;
+}
+
+.custom-cursor.light.clicking .cursor-shape::before {
+  border-color: #ffffff;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.55);
+}
+
+html[data-theme='dark'] .custom-cursor .cursor-shape::before {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+html[data-theme='dark'] .custom-cursor .cross::before,
+html[data-theme='dark'] .custom-cursor .cross::after {
+  background: #ffffff;
+}
+
+html[data-theme='dark'] .custom-cursor.clicking .cursor-shape::before {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.55);
+}
+
+html[data-theme='dark'] .custom-cursor.on-light .cursor-shape::before {
+  border-color: #000000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme='dark'] .custom-cursor.on-light .cross::before,
+html[data-theme='dark'] .custom-cursor.on-light .cross::after {
+  background: #000000;
+}
+
+html[data-theme='dark'] .custom-cursor.on-light.clicking .cursor-shape::before {
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 640px) {
+  .custom-cursor { display: none; }
+}
